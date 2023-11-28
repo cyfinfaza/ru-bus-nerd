@@ -1,0 +1,45 @@
+{% extends "header.html" %} {% block head %} {{ super() }}
+<title>RU Bus Nerd</title>
+<style>
+  /* remove arrows from busnuminput */
+  #busNumInput::-webkit-inner-spin-button,
+  #busNumInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  #busNumInput {
+    -moz-appearance: textfield;
+    padding: 4px;
+    font-size: 3em;
+    font-family: Arial;
+    font-weight: bold;
+    background: #ccc;
+    color: #111;
+  }
+</style>
+{% endblock %} {% block body %}
+<input id="busNumInput" type="text" maxlength="4" placeholder="#" autofocus />
+<button style="font-weight: 700; text-transform: uppercase" onclick="goToBus">
+  Go
+</button>
+<script>
+  console.log("hello");
+  const busNumInput = document.getElementById("busNumInput");
+  busNumInput.addEventListener("keypress", function (event) {
+    if (isNaN(event.key)) {
+      event.preventDefault();
+    }
+    if (event.key === "Enter") {
+      goToBus();
+    }
+  });
+  function goToBus() {
+    const busNum = busNumInput.value;
+    console.log(busNum);
+    if (busNum.length < 3) {
+      return;
+    }
+    window.location.href = "/bus/" + busNum;
+  }
+</script>
+{% endblock %}
