@@ -47,11 +47,32 @@
   <h4>Campus</h4>
   <p>{{campus or "--"}}</p>
   <h4>Notes</h4>
-  <p>{{notes or "--"}}</p>
+  <!-- if notes exist, split by newline and turn into bulleted list, or else show -- -->
+  <p>
+    {% if notes %}
+    <ul>
+      {% for note in notes.split("\n") %}
+      <li>{{note}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    --
+    {% endif %}
+  </p>
   <h4>Group</h4>
   <p>{{group or "--"}}</p>
   <h4>Group Notes</h4>
-  <p>{{group_notes or "--"}}</p>
+  <p>
+    {% if group_notes %}
+    <ul>
+      {% for note in group_notes.split("\n") %}
+      <li>{{note}}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    --
+    {% endif %}
+  </p>
   <h4>Manufacturer</h4>
   <p>{{manufacturer or "--"}}</p>
   <h4>Model</h4>

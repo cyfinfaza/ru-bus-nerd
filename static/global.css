@@ -92,3 +92,7 @@ h4 {
 p {
   font-weight: 300;
 }
+
+ul {
+  padding-right: 1em;
+}
