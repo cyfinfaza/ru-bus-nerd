@@ -3,8 +3,8 @@
 @font-face {
   font-family: "Arial Bold";
   font-style: normal;
-  font-weight: normal;
-  src: local("Arial Bold"), url("ARIALBD.woff") format("woff");
+  font-weight: bold;
+  src: url("ARIALBD.woff") format("woff");
 }
 
 body {
