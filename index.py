@@ -4,14 +4,21 @@ import json
 
 app = Flask(__name__)
 
+@app.errorhandler(Exception)
+def handle_error(e):
+    return render_template("error.html", code=e.code, message=str(e)), e.code
+
 @app.route("/")
 def hello_world():
     return render_template("index.html")
 
 @app.route("/bus/<int:bus_num>")
 def bus_page(bus_num):
-    bus_data = scrapeByNum(bus_num)
-    return render_template("bus.html", **bus_data)
+    try:
+        bus_data = scrapeByNum(bus_num)
+        return render_template("bus.html", **bus_data)
+    except Exception as e:
+        return render_template("error.html", code=404, message=str(e)), 404
 
 @app.route("/api/bus/<int:bus_num>")
 def api_bus_page(bus_num):

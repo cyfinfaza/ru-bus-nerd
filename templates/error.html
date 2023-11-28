@@ -1,0 +1,30 @@
+{% extends "header.html" %} {% block head %} {{ super() }}
+<title>Error - RU Bus Nerd</title>
+<style></style>
+{% endblock %} {% block body %}
+<img style="width: 100%" src="/static/bad-bus.jpg" alt="bad bus" />
+<h1
+  style="
+    font-family: Arial, 'Inter Tight', sans-serif;
+    font-size: 3em;
+    text-align: right;
+    position: sticky;
+    padding: 16px;
+    top: 0;
+    height: 88px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-bottom: 0;
+    z-index: 0;
+    width: fit-content;
+  "
+>
+  {{code}}
+</h1>
+<div style="padding: 0.5em">
+  <p>{{message}}</p>
+</div>
+{% endblock %}

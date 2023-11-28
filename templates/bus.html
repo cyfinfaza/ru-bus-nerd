@@ -1,4 +1,15 @@
 {% extends "header.html" %} {% block head %} {{ super() }}
+<meta property="og:title" content="{{fleet_number}} - Rutgers Bus Nerd" />
+<meta
+  name="description"
+  content="Bus {{fleet_number}} is a {{year}} {{manufacturer}} {{model}} used on the {{campus}} campus. View the whole page for more details."
+/>
+<meta
+  property="og:description"
+  content="Bus {{fleet_number}} is a {{year}} {{manufacturer}} {{model}} used on the {{campus}} campus. View the whole page for more details."
+/>
+<meta property="og:image" content="{{image_url}}" />
+<meta property="og:type" content="website" />
 <title>{{fleet_number}} - RU Bus Nerd</title>
 <style></style>
 {% endblock %} {% block body %}
@@ -30,30 +41,30 @@
 </h1>
 <div style="padding: 0.5em">
   <h4>Status</h4>
-  <p>{{status_disposal}}</p>
+  <p>{{status_disposal or "--"}}</p>
   <h4>Year</h4>
-  <p>{{year}}</p>
+  <p>{{year or "--"}}</p>
   <h4>Campus</h4>
-  <p>{{campus}}</p>
+  <p>{{campus or "--"}}</p>
   <h4>Notes</h4>
-  <p>{{notes}}</p>
+  <p>{{notes or "--"}}</p>
   <h4>Group</h4>
-  <p>{{group}}</p>
+  <p>{{group or "--"}}</p>
   <h4>Group Notes</h4>
-  <p>{{group_notes}}</p>
+  <p>{{group_notes or "--"}}</p>
   <h4>Manufacturer</h4>
-  <p>{{manufacturer}}</p>
+  <p>{{manufacturer or "--"}}</p>
   <h4>Model</h4>
-  <p>{{model}}</p>
+  <p>{{model or "--"}}</p>
   <h4>Engine</h4>
-  <p>{{engine}}</p>
+  <p>{{engine or "--"}}</p>
   <h4>Transmission</h4>
-  <p>{{transmission}}</p>
+  <p>{{transmission or "--"}}</p>
   <h4>Built</h4>
-  <p>{{build_date}}</p>
+  <p>{{build_date or "--"}}</p>
   <h4>License Plate</h4>
-  <p>{{license_plates}}</p>
+  <p>{{license_plates or "--"}}</p>
   <h4>VIN</h4>
-  <p>{{vin}}</p>
+  <p>{{vin or "--"}}</p>
 </div>
 {% endblock %}
