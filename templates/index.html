@@ -23,15 +23,15 @@
   }
 </style>
 {% endblock %} {% block body %}
-<input id="busNumInput" type="text" maxlength="4" placeholder="#" autofocus />
-<button style="font-weight: 700; text-transform: uppercase" onclick="goToBus">
+<input id="busNumInput" type="number" placeholder="#" autofocus />
+<button style="font-weight: 700; text-transform: uppercase" onclick="goToBus()">
   Go
 </button>
 <script>
   console.log("hello");
   const busNumInput = document.getElementById("busNumInput");
   busNumInput.addEventListener("keypress", function (event) {
-    if (isNaN(event.key)) {
+    if (isNaN(event.key) || event.target.value.length >= 4) {
       event.preventDefault();
     }
     if (event.key === "Enter") {
