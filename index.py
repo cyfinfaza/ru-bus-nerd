@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from ru_cptdb_scraper import scrapeByNum
+from ru_transitstat_api import getLiveData
 import json
 
 app = Flask(__name__)
@@ -16,6 +17,8 @@ def hello_world():
 def bus_page(bus_num):
     try:
         bus_data = scrapeByNum(bus_num)
+        bus_data['live'] = getLiveData(str(bus_num))
+        bus_data['live_available'] = bus_data['live'] is not None
         return render_template("bus.html", **bus_data)
     except Exception as e:
         return render_template("error.html", code=404, message=str(e)), 404

@@ -20,7 +20,7 @@
 />
 <h1
   style="
-    font-family: 'Arial Bold', Arial, 'Inter Tight', sans-serif;
+    font-family: 'Helvetica Bold', 'Arial Bold', Arial, 'Inter Tight', sans-serif;
     font-size: 3em;
     text-align: right;
     position: sticky;
@@ -40,7 +40,30 @@
   {{fleet_number}}
 </h1>
 <div style="padding: 0.5em">
-  <h4>Status</h4>
+  <div class="statusContainer">
+    <h4 style="margin-bottom: 0.2em;">Live Data</h4>
+    {% if live_available %}
+    <table>
+      <tr>
+        <td>
+          Route
+        </td>
+        <td style="display: flex; align-items: center;"><span class="circle" style="background-color: {{'#' + (live['lineColor'] or 'fff2')}};"></span>{{live['line'] or "--"}}</td>
+      </tr>
+      <tr>
+        <td>Load</td>
+        <td>{{live['extra']['load'] or "--"}}</td>
+      </tr>
+      <!-- <tr>
+        <td>Next Stop</td> 
+        <td>{{live.predictions.load or "--"}}</td>
+      </tr> -->
+    </table>
+    {% else %}
+    <p>Bus is offline.</p>
+    {% endif %}
+  </div>
+  <h4>Operational Status</h4>
   <p>{{status_disposal or "--"}}</p>
   <h4>Year</h4>
   <p>{{year or "--"}}</p>

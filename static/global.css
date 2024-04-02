@@ -7,6 +7,13 @@
   src: url("ARIALBD.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Helvetica Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("helvetica-bold.woff") format("woff");
+}
+
 body {
   margin: 0;
   background-color: #000;
@@ -95,4 +102,38 @@ p {
 
 ul {
   padding-right: 1em;
+}
+
+.circle {
+  display: inline-block;
+  height: 0.75em;
+  width: 0.75em;
+  border-radius: 50%;
+  margin-inline-end: 0.5em;
+}
+
+.statusContainer {
+  border-radius: 8px;
+  padding: 12px;
+  background: #1d1d1d;
+}
+
+.statusContainer > *:not(.circle) {
+  margin: 0;
+}
+
+/* table should have right column right aligned */
+
+.statusContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.statusContainer td:nth-child(2) {
+  text-align: right;
+  justify-content: right;
+}
+
+.statusContainer tr:nth-child(n + 2) {
+  border-top: 1px solid #fff2;
 }
