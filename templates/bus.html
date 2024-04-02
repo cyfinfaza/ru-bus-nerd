@@ -52,7 +52,7 @@
       </tr>
       <tr>
         <td>Load</td>
-        <td>{{live['extra']['load'] or "--"}}</td>
+        <td>{{live['extra']['load']|string + "%" or "--"}}</td>
       </tr>
       <!-- <tr>
         <td>Next Stop</td> 
