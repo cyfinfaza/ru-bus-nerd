@@ -20,12 +20,16 @@ def scrapeByNum(bus_number):
         def testRanges(bus_num):
             for entry in current_fleet["Fleet Number(s)"]:
                 for num in entry.split(","):
-                    if not "-" in num:
-                        if bus_num == int(num):
-                            return entry
-                    else:
-                        if bus_num in range(int(num.split("-")[0]), int(num.split("-")[1])+1):
-                            return entry
+                    try:
+                        if not "-" in num:
+                            if bus_num == int(num):
+                                return entry
+                        else:
+                            if bus_num in range(int(num.split("-")[0]), int(num.split("-")[1])+1):
+                                return entry
+                    except ValueError as e:
+                        print(e)
+                        print("Failed to parse bus number group with string " + num)
             raise UserFacingError("Bus number not found.")
 
         bus_data = {}
